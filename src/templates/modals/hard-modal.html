@@ -1,0 +1,18 @@
+<!-- Modal HTML -->
+<div id="hardModal" class="modal fade" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p id="message"></p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" href="{% url 'stories:author-characters' story.id %}" role="button">Continue Assigning</a>
+                <a class="btn btn-secondary" href="{% url 'stories:view' story.id %}" role="button">View Story</a>
+            </div>
+        </div>
+    </div>
+</div>

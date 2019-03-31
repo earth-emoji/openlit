@@ -1,0 +1,85 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+{% include 'modals/hard-modal.html' %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1 class="py-3">Choose Character</h1>
+        </div>
+    </div>
+
+    <div class="card-columns">
+        {% for character in characters %}
+        <div class="card">
+            {% for photo in character.album.photos.all %}
+                {% if photo.default and photo.album.name == character.album.name  %}
+                    <img src="{{ MEDIA_URL }}{{photo.file}}" class="card-img-top" 
+                    style="object-fit: cover; object-position: 100% 0; height: 337px;" alt="...">
+                {% endif %}
+            {% endfor %}
+            <div class="card-body">
+                <h4 class="card-title">{{ character.name }}</h4>
+                <form id="scform-{{ character.id }}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="character-{{ character.id }}" id="character-{{ character.id }}" value="{{ character.id }}">
+                    <div class="form-group">
+                      <label for="role">Role</label>
+                      <select class="form-control" name="role-{{ character.id }}" id="role-{{ character.id }}">
+                        <option>Select a role for your character</option>
+                        <option value="Protagonist">Protagonist</option>
+                        <option value="Deuteragonist">Deuteragonist</option>
+                        <option value="Antagonist">Antagonist</option>
+                        <option value="Love Interest">Love Interest</option>
+                        <option value="Mentor">Mentor</option>
+                        <option value="Narrator">Narrator</option>
+                        <option value="Secondary">Secondary Character</option>
+                        <option value="Tertiary">Tertiary Character</option>
+                        <option value="Flat">Flat Character</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" onclick="assignCharacter('#scform-{{ character.id }}', '#character-{{ character.id }}', '#role-{{ character.id }}')">
+                        Choose
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% empty %}
+            <p>
+                No characters available
+            </p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block javascript %}
+<script type="text/javascript">
+    assignCharacter = function(form, character_id, role_id) {
+
+        url = "{% url 'stories:assign-character' story.id %}";
+
+        $(document).on('submit', form, function(e) {
+            e.preventDefault();
+            
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: {
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    character: $(character_id).val(),
+                    role: $(role_id).val(),
+                }, 
+                success: function(data) {
+                    $('#message').html(data.message);
+                    $('#hardModal').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                    });
+                }
+            });
+        });
+    };
+</script>
+{% endblock javascript %}

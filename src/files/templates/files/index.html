@@ -1,0 +1,89 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <h1>Files Home</h1>
+                <br/>
+
+                <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="my_file" name="my_file">
+                        <label class="custom-file-label" for="my_file">Choose file</label>
+                    </div>
+                    <div class="form-group my-2">
+                      <label for="folder">Select a folder</label>
+                      <select class="form-control" name="folder" id="folder">
+                        <option>-- Select Folder --</option>
+                        {% for folder in folders %}
+                            <option value="{{ folder.id }}">{{ folder.name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <button class="btn btn-secondary" type="submit">Upload</button>
+                </form>
+
+                <br/>
+                <br/>
+
+                <div class="table-responsive">
+                <h2>File Type Count</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        {% for file_type in file_types %}
+                            <th scope="col">{{ file_type }}</th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        {% for file_type_count in file_type_counts %}
+                            <td>{{ file_type_count }}</td>
+                        {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+                <br/>
+
+                <h2>Files</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">file name</th>
+                        <th scope="col">size</th>
+                        <th scope="col">file type</th>
+                        <th scope="col">upload date</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for file in files %}
+                        {% url 'files:download_file' as download_file_url%}
+
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ file.file.name }}</td>
+                            <td>{{ file.size }}</td>
+                            <td>{{ file.file_type }}</td>
+                            <td>{{ file.uploaded_at }}</td>
+                            <td>
+                                <form action="{{ download_file_url }}" method="post">
+                                    {% csrf_token %}
+                                    
+                                    <input type="hidden" name="path" value="{{ file.file.name }}">
+                                    <input type="submit" class="btn btn-primary label-success" value="Download" />
+                                </form>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

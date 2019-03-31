@@ -1,0 +1,32 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1 class="py-3">Compose Message</h1>
+            <form class="pb-3" method="post" novalidate>
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.subject.errors }}
+                    <label for="{{ form.subject.id_for_label }}">Subject:</label>
+                    {{ form.subject }}
+                </div>
+                <div class="form-group">
+                    {{ form.body.errors }}
+                    <label for="{{ form.body.id_for_label }}">Body:</label>
+                    {{ form.body }}
+                </div>
+                <div class="form-group">
+                    {{ form.recipients.errors }}
+                    <label for="{{ form.recipients.id_for_label }}">Recipients:</label>
+                    {{ form.recipients }}
+                </div>
+                <button type="submit" class="btn btn-custom rounded-pill">Save</button>
+                <a href="{% url 'messages:inbox' request.user.profile.id %}" class="btn btn-secondary rounded-pill">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}

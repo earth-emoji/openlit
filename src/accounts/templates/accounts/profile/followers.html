@@ -1,0 +1,15 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+    <h1 class="py-3">Followers</h1>
+    {% for person in followers %}
+        <div class="card">
+            <div class="card-body">
+                <p>{{ person.follower.user.name }}</p>
+            </div>
+        </div>
+        {% comment %} 
+            {% for group in person.groups.all %}{{ group.name }}{% endfor %} 
+        {% endcomment %}
+    {% endfor %}
+{% endblock content %}

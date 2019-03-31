@@ -1,0 +1,56 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+    <div class="my-3">
+        <a class="btn btn-outline-primary" href="{% url 'contacts:pro_contacts' request.user.profile.id %}" role="button">My Contacts</a>
+        <a class="btn btn-outline-primary" href="#" role="button">People</a>
+    </div>
+    {% for contact in requests %}
+        <div class="card">
+            <div class="card-body">
+                <p>{{ contact.sender.user.name }}</p>
+                <form id="res-form-{{contact.id}}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <select class="form-control" id="status" name="status">
+                            <option value="1">Accept</option>
+                            <option value="0">Deny</option>
+                        </select>
+                    </div>
+                    <input type="hidden" id="res-{{contact.sender.id}}" value="{{ contact.sender.id }}" />
+                    <button type="submit" onclick="addContact('res-form-{{contact.id}}', {{contact.sender.id}})"  class="btn btn-primary btn-round">Respond</button>
+                </form>
+            </div>
+        </div>
+        {% comment %} 
+            {% for group in person.groups.all %}{{ group.name }}{% endfor %} 
+        {% endcomment %}
+    {% endfor %}
+{% endblock content %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        addContact = function(form_id, user_id) {
+            form_selector = '#' + form_id;
+            user_selector = '#res-' + user_id;
+            url = "{% url 'contacts:contact_response' request.user.profile.id %}";
+
+            $(document).on('submit', form_selector, function(e) {
+                e.preventDefault();
+                
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {
+                        status: $('#status').val(),
+                        contact: $(user_selector).val(),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                    }, 
+                    success: function() {
+                        alert('Contact added!');
+                    }
+                });
+            });
+        };
+    </script>
+{% endblock javascript %}

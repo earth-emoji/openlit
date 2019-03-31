@@ -1,0 +1,27 @@
+{% extends 'profile.html' %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1 class="py-3">Create Character</h1>
+            <form class="pb-3" method="post" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.name.errors }}
+                    <label for="{{ form.name.id_for_label }}">Name:</label>
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    {{ form.photo.errors }}
+                    <label for="{{ form.photo.id_for_label }}">Photo:</label>
+                    {{ form.photo }}
+                </div>
+                <button type="submit" class="btn btn-primary rounded-pill">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}

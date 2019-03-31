@@ -1,0 +1,32 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col">
+                <h1 class="py-3">Inbox</h1>
+                <div class="my-2">
+                    <a href="{% url 'messages:compose' %}" class="btn btn-custom rounded-pill"><i class="fas fa-pen-square"></i> Compose</a> 
+                    <a href="{% url 'messages:outbox' request.user.profile.id %}" class="btn btn-custom rounded-pill"><i class="fas fa-share-square"></i> Outbox</a>
+                </div>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Sender</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for message in messages %}
+                            <td>{{ message.subject }}</td> 
+                            <td>{{ message.sender.user.name }}</td>
+                            <td>{{ message.created_at }}</td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+           </div> 
+        </div>
+    </div>
+{% endblock content %}

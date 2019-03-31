@@ -1,0 +1,33 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <header class="col">
+            <h1>Stories</h1>
+        </header>
+    </div>
+
+    <div class="card-columns">
+        {% for story in stories %}
+        <div class="card">
+            {% for photo in story.album.photos.all %}
+                {% if photo.default and photo.album.name == story.album.name  %}
+                    <img src="{{ MEDIA_URL }}{{photo.file}}" class="card-img-top" 
+                    style="object-fit: cover; object-position: 100% 0; height: 337px;" alt="...">
+                {% endif %}
+            {% endfor %}
+            <div class="card-body">
+                <h4 class="card-title"><a href="{% url 'stories:view' story.id %}">{{ story.title }}</a></h4>
+            </div>
+        </div>
+        {% empty %}
+            <p>You haven't created any stories</p>
+        {% endfor %}
+        
+    </div>
+</div>
+
+{% endblock content %}

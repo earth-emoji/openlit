@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block styles %}
+<style>
+  body, html {
+    height: 100%;
+  }
+  
+</style>
+{% endblock styles %}
+{% block content %}
+<div class="parallax text-center parallax-mt">
+  <div class="mid">
+    <h2>OpenLit</h2>
+    <p class="tagline">Writers &amp; Readers Welcome</p>
+  </div>
+  <div class="color-overlay"></div>
+</div>
+
+<div class="row no-gutters">
+  <div class="col-sm">
+    <div class="img-block candidate-block vh-50">
+      <div class="txt-block text-center">
+        <p>If you are new to Comani, get started by creating a <a href="{% url 'user_signup' %}">user's account</a></p>
+      </div>
+      <div class="color-overlay"></div>
+    </div>
+    
+  </div>
+  <div class="col-sm">
+    <div class="img-block employer-block vh-50">
+      <div class="txt-block text-center">
+        <p>vendor's account</p>
+      </div>
+      <div class="color-overlay"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script></script>
+{% endblock javascript %}

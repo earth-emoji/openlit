@@ -1,0 +1,14 @@
+<!--
+    a list for the side bar and the list should display the category name
+-->
+
+<div class="card mb-3" style="width: 100%;">
+    <div class="card-header">
+        Categories
+    </div>
+    <ul class="list-group list-group-flush">
+        {% for category in qs %}
+                <li class="list-group-item"><a href="#">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

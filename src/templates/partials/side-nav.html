@@ -1,0 +1,19 @@
+<!-- Sidebar Holder -->
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h3>OpenLit</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        <p>{{ request.user.name }}</p>
+        <li class="active">
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="{% url 'characters:my-characters' request.user.profile.id %}">Characters</a>
+        </li>
+        <li>
+            <a href="{% url 'stories:my-stories' request.user.profile.id %}">Stories</a>
+        </li>
+    </ul>
+</nav>

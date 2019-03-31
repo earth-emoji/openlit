@@ -1,0 +1,16 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="py-3">{{ request.user.name }}'s Timeline</h1>
+    
+            {% for post in posts %}
+                <p>{{post.content}} - posted by: {{post.user.user.name}}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}

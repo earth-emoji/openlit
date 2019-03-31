@@ -1,0 +1,18 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+    <div class="my-3">
+        <a class="btn btn-outline-primary" href="#" role="button">My Contacts</a>
+        <a class="btn btn-outline-primary" href="{% url 'contacts:contact_requests' request.user.profile.id %}" role="button">Requests</a>
+    </div>
+    {% for person in pro.contacts.all %}
+        <div class="card">
+            <div class="card-body">
+                <p>{{ person.name }}</p>
+            </div>
+        </div>
+        {% comment %} 
+            {% for group in person.groups.all %}{{ group.name }}{% endfor %} 
+        {% endcomment %}
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,94 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+    <div class="my-3">
+        <a class="btn btn-outline-primary" href="#" role="button">My Contacts</a>
+        <a class="btn btn-outline-primary" href="{% url 'contacts:contact_requests' request.user.profile.id %}" role="button">Requests</a>
+    </div>
+    {% for person in people %}
+        <div class="card">
+            <div class="card-body">
+                <h2>{{ person.user.name }}</h2>
+                <div class="row">
+                    <div class="col">
+                        <form id="req-form-{{person.id}}">
+                            {% csrf_token %}
+                            <input type="hidden" id="req-{{person.id}}" value="{{ person.id }}" />
+                            <button type="submit" onclick="contactRequest('req-form-{{person.id}}', {{person.id}})"  class="btn btn-outline-primary btn-block">Contact</button>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <form id="f-form-{{person.id}}">
+                            {% csrf_token %}
+                            <input type="hidden" id="f-{{person.id}}" value="{{ person.id }}" />
+                            <button type="submit" onclick="follow('f-form-{{person.id}}', {{person.id}})"  class="btn btn-outline-primary btn-block">Follow</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% comment %} 
+            {% for group in person.groups.all %}{{ group.name }}{% endfor %} 
+        {% endcomment %}
+    {% endfor %}
+{% endblock content %}
+
+{% block javascript %}
+    <script type="text/javascript">
+
+        /*var socket = new WebSocket('ws://' + window.location.host + '/users/');
+
+        socket.onopen = function open() {
+            console.log('WebSockets connection created.');
+        };
+
+        if (socket.readyState == WebSocket.OPEN) {
+            socket.onopen();
+        }*/
+
+        contactRequest = function(form_id, user_id) {
+            form_selector = '#' + form_id;
+            user_selector = '#req-' + user_id;
+            url = "{% url 'contacts:send_request' request.user.profile.id %}";
+            
+
+            $(document).on('submit', form_selector, function(e) {
+                e.preventDefault();
+                
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {
+                        contact: $(user_selector).val(),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                    }, 
+                    success: function(data) {
+                        alert("Contact request sent!");
+                    }
+                });
+            });
+        };
+        follow = function(form_id, user_id) {
+            form_selector = '#' + form_id;
+            user_selector = '#f-' + user_id;
+            url = "{% url 'community:follow' request.user.profile.id %}";
+
+            $(document).on('submit', form_selector, function(e) {
+                e.preventDefault();
+                
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {
+                        follow: $(user_selector).val(),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                    }, 
+                    success: function() {
+                        alert('Now following');
+                    }
+                });
+            });
+        };
+
+    </script>
+{% endblock javascript %}

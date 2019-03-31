@@ -1,0 +1,210 @@
+[
+    {
+      "model": "accounts.politicalparty",
+      "pk": 2,
+      "fields": {
+        "name": "American Party",
+        "established": 1969,
+        "info": "The American Party of the United States, is the only political party with a set of Permanent Principles. These principles have never been changed nor adjusted, and will not change. We support the Constitution, and believe that an unwavering foundation is needed for a truly stable and free America.",
+        "url": "https://www.americanpartyofus.com"
+      }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 3,
+        "fields": {
+          "name": "Conservative Party",
+          "info": "The Conservative Party USA will rectify the consistent failures and corruption of the current two-party system.  CP-USA will impose fiscal discipline, restrain the reach of the federal government as outlined in the Constitution and defend America’s traditional family values",
+          "url": "http://home.conservativepartyusa.org"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 4,
+        "fields": {
+          "name": "Constitution Party",
+          "established": 1991,
+          "info": "The Constitution Party, previously known as the U.S. Taxpayers' Party, is a national political party in the United States. The idea that the principles and intents of the U.S. Constitution remain relevant in human relations was the origin of the 1991 founding.",
+          "url": "https://www.constitutionparty.com/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 5,
+        "fields": {
+          "name": "Democratic Party",
+          "established": 1828,
+          "info": "There are several core beliefs that tie our party together: Democrats believe that we’re greater together than we are on our own — that this country succeeds when everyone gets a fair shot, everyone does their fair share, and everyone plays by the same rules. Our party is focused on building an economy that lifts up all Americans, not just those at the top.",
+          "url": "https://democrats.org/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 6,
+        "fields": {
+          "name": "Grassroots Party",
+          "established": 1986,
+          "info": "The Grassroots Party is dedicated to personal freedom, justice and peace. We uphold the Bill of Rights and work to repeal drug prohibition, to restore civil liberties and environmental balance, and to ensure equality through the political process. The primary purpose of the Grassroots Party is the total legalization of cannabis and the pardon and release of all prisoners held on so-called “marijuana” charges.",
+          "url": "http://www.grassrootsparty.net/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 7,
+        "fields": {
+          "name": "Green Party",
+          "established": 2001,
+          "info": "The Green Party of the United States is a green federation of political parties in the United States. The party promotes green politics, specifically environmentalism, nonviolence, social justice, participatory, grassroots democracy, gender equality, LGBT rights, anti-war and anti-racism.",
+          "url": "http://www.gp.org/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 8,
+        "fields": {
+          "name": "Justice Party",
+          "established": 2011,
+          "info": "The Justice Party USA is a political party in the United States. It was organized in November 2011 by a group of political activists including former mayor of Salt Lake City Rocky Anderson as an alternative to what he saw as a duopoly of the two major political parties.",
+          "url": "http://www.justicepartyusa.org/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 9,
+        "fields": {
+          "name": "Legal Marijuana Now Party",
+          "established": 1998,
+          "info": "Legal Marijuana Now is a political third party in the United States established in 1998 to oppose drug prohibition. The party shares many of the progressive values of the Farmer-Labor Party but with an emphasis on marijuana/hemp legalization issues.",
+          "url": "https://www.facebook.com/LMN.USA/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 10,
+        "fields": {
+          "name": "Libertarian Party",
+          "established": 1971,
+          "info": "The Libertarian Party is a political party in the United States that promotes civil liberties, non-interventionism, laissez-faire capitalism and shrinking the size and scope of government.",
+          "url": "https://www.lp.org/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 11,
+        "fields": {
+          "name": "Moderate Party",
+          "info": "Reintroduce moderation into the nation conversation.",
+          "url": "http://www.moderatepartyusa.com/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 12,
+        "fields": {
+          "name": "Peace and Freedom Party",
+          "established": 1969,
+          "info": "The Peace and Freedom Party, born from the civil rights and anti-war movements of the 1960s, is committed to socialism, democracy, ecology, feminism, racial equality, and internationalism.",
+          "url": "http://www.peaceandfreedom.org/home/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 13,
+        "fields": {
+          "name": "Progressive Party",
+          "established": 1912,
+          "info": "We strive to educate and bring awareness to all progressive issues that seek to improve the life, liberty, environment, and the pursuit of happiness for every individual or creature that inhabits the United States of America or the world around us.",
+          "url": "https://progressivepartyusa.com/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 14,
+        "fields": {
+          "name": "Prohibition Party",
+          "established": 1869,
+          "info": "The Prohibition Party is a political party in the United States best known for its historic opposition to the sale or consumption of alcoholic beverages. It is the oldest existing third party in the US. The party is an integral part of the temperance movement.",
+          "url": "https://www.prohibitionparty.org/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 14,
+        "fields": {
+          "name": "Reform Party",
+          "established": 1995,
+          "info": "The Reform Party is a moderate, centrist and populist party that sits in the center of the political spectrum. It has moderate fiscal and economic platforms mixed with strong calls for ethics and electoral reform based on populist beliefs. We invite you to come in and look around.",
+          "url": "http://www.reformparty.org/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 15,
+        "fields": {
+          "name": "Republican Party",
+          "established": 1854,
+          "info": "The Republican Party, also referred to as the GOP, is one of the two major political parties in the United States, the other being its historic rival, the Democratic Party. The party is named after republicanism, a major ideology of the American Revolution.",
+          "url": "http://www.gop.com/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 16,
+        "fields": {
+          "name": "Socialism and Liberation Party",
+          "established": 2004,
+          "info": "Our mission is to link the everyday struggles of oppressed and exploited people to the fight for a new world.",
+          "url": "https://www.pslweb.org"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 17,
+        "fields": {
+          "name": "Unity Party",
+          "established": 2004,
+          "info": "The Unity Party of America was founded on November 4, 2004 (the day after that year's Presidential Election) for Our Principles (from the beginning, we have stood for Common Sense like Balanced Budgets and Term Limits) and we now have a Membership in 37 States and counting.",
+          "url": "http://www.unityparty.us"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 18,
+        "fields": {
+          "name": "Veterans Party",
+          "established": 2013,
+          "info": "Veterans Party of America's goal is to place solution oriented leadership into public offices around the nation in all forms of government. The Veterans Party of America is neither politically left or right. The Veterans Party of America is a centrist party, which is inclusive to all American citizens.",
+          "url": "http://www.veteranspartyofamerica.org/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 19,
+        "fields": {
+          "name": "Women's Equality Party",
+          "established": 2014,
+          "info": "The foundation of the Women’s Equality Party (WEP) is based on the Women’s Equality Act. The WEP is an answer to the assaults on the basic rights of women. But it is also much more than that.",
+          "url": "http://womensequalityparty.org/"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 20,
+        "fields": {
+          "name": "Working Class Party",
+          "established": 2014,
+          "info": "Working people need our own party, a party of our whole class, built around the conviction that the 'working class and the employing class have nothing in common', in the words of the IWW.",
+          "url": "https://www.workingclassfight.com"
+        }
+    },
+    {
+        "model": "accounts.politicalparty",
+        "pk": 21,
+        "fields": {
+          "name": "Working Families Party",
+          "established": 1998,
+          "info": "We are fighting for a brighter future for America. One where the economy works for everyone, not just the wealthy and well-connected. One where politicians are accountable to working people, instead of Wall Street lobbyists and corporate CEOs. One where all of us, no matter where we come from, can find a good job, get healthcare when we need it, afford a home, send our kids to good schools, and have a secure retirement.",
+          "url": "http://workingfamilies.org/"
+        }
+    }
+  ]

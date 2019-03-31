@@ -1,0 +1,26 @@
+{% extends 'profile.html' %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1 class="py-3">Create Story</h1>
+            <form class="pb-3" method="post" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.title.errors }}
+                    <label for="{{ form.title.id_for_label }}">Title:</label>
+                    {{ form.title }}
+                </div>
+                <div class="form-group">
+                    {{ form.photo.errors }}
+                    <label for="{{ form.photo.id_for_label }}">Photo:</label>
+                    {{ form.photo }}
+                </div>
+                <button type="submit" class="btn btn-primary rounded-pill">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

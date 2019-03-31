@@ -1,0 +1,97 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+         <h1 class="py-3">{{ request.user.name }}'s Profile</h1>
+    <div class="py-2">
+        <a href="{% url 'profile:timeline' request.user.profile.id %}" class="btn btn-custom rounded-pill">
+            <i class="fas fa-history"></i> Timeline
+        </a>
+    </div>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.content.errors }}
+            <label for="{{ form.content.id_for_label }}">Content:</label>
+            {{ form.content }}
+        </div>
+        <button type="submit" class="btn btn-custom rounded-pill">Post</button>
+    </form>
+    <div class="my-3">
+        <ul id="new">
+        
+        </ul>
+    </div>
+    <div class="posts my-3">
+        {% for post in posts %}
+            <p>{{post.content}} - posted by: {{post.user.user.name}}</p>
+        {% endfor %}
+    </div> 
+      </div>  
+    </div>
+</div>
+   
+{% endblock content %}
+
+{% block javascript %}
+<script type="text/javascript">
+
+{% comment %} var loc = window.location;
+var wsStart = 'ws://';
+
+if (loc.protocol ==  'https:') {
+    wsStart = 'wss://';
+}
+var endpoint = wsStart + loc.host + loc.pathname;
+var socket = new WebSocket(endpoint);
+socket.onmessage = function(e) {
+    console.log("message", e);
+};
+socket.onopen = function(e) {
+    console.log("open", e);
+};
+socket.onerror = function(e) {
+    console.log("error", e);
+};
+socket.close = function(e) {
+    console.log("close", e);
+};  {% endcomment %}
+
+
+    {% comment %} (function loadPosts($) { 
+        setInterval(function(){
+            $.ajax({
+                url: "{% url 'profile:load-posts' %}",
+                type: "GET",
+                data: {
+                    user_id: "{{ request.user.profile.id }}",
+                },
+                success: function(data) {
+                    // create an array objects objects that contains the post and username 
+                    var users = [];
+                    var i;
+                    json_data = JSON.parse(data)
+                    $("#new").empty();
+                    $.each(json_data, function(i, val) {
+                        {% for user in users %}
+                            var u = "{{user.id}}";
+                            var uname = "{{user.user.name}}";
+                            if(u == val.fields.user) {
+                                $("#new").append(`<li><span>${val.fields.content}: ${u} - ${uname}</span></li>`);
+                            }
+                            //console.log(u)
+                        {% endfor %}
+                        //console.log();
+                    });
+                    
+                    //console.log(users)
+                    //$('#highest-bid').html(data).fadeIn("slow");
+
+                }
+            });
+        }, 1000);
+    })(jQuery); {% endcomment %}
+</script>
+{% endblock javascript %}

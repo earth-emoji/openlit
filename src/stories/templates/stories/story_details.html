@@ -1,0 +1,42 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+             {% for photo in story.album.photos.all %}
+                {% if photo.default and photo.album.name == story.album.name  %}
+                    <img src="{{ MEDIA_URL }}{{photo.file}}" class="card-img-top" 
+                    style="object-fit: cover; object-position: 100% 0; height: 337px;" alt="...">
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">
+                    {{ story.title }}
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{ story.title }}</h4>
+                    <p class="card-text">Characters: 
+                        <ul class="list-inline">
+                        {% for sc in characters %}
+                            <li class="list-inline-item">{{ sc.character.name }}: {{ sc.role }}</li>
+                        {% endfor %}
+                        </ul>
+                    </p>
+                    <p class="card-text">Acts: 
+                        <ul class="list-unstyled">
+                        {% for act in story.acts.all %}
+                            <li>{{ act.act_number }}: {{ act.title }}</li>
+                        {% endfor %}
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
