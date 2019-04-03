@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import StoryForm, ActForm
+from .forms import StoryForm, ActForm, SceneForm, DialogueForm
 from .models import Story, StoryCharacter, Act, Scene, Dialogue
 from accounts.models import UserProfile
 from characters.models import Character
@@ -97,7 +97,32 @@ def act_create(request, pk, template_name='stories/act_form.html', data={}):
     data['section'] = 'StoryDetails'
     return render(request, template_name, data)
 
-def scene_list(request, pk, template_name='stories/act_form.html', data={}):
+def act_details(request, pk, template_name='stories/act_details.html', data={}):
     act = Act.objects.get(pk=pk)
+    scenes = Scene.objects.filter(act=act).order_by('-position')
     data['act'] = act
+    data['scenes'] = scenes
+    data['section'] = 'Act'
+    return render(request, template_name, data)
+
+def scene_create(request, pk, template_name='stories/scene_form.html', data={}):
+    act = Act.objects.get(pk=pk)
+    form = SceneForm(request.POST or None)
+
+    if form.is_valid():
+        c = form.save(commit=False)
+        c.act = act
+        c.save()
+        return redirect('stories:act-view', act.id)
+    data['form'] = form
+    data['act'] = act
+    data['section'] = 'Act'
+    return render(request, template_name, data)
+
+def scene_details(request, pk, template_name='stories/scene_details.html', data={}):
+    scene = Scene.objects.get(pk=pk)
+    act = Act.objects.get(pk=scene.act.id)
+    data['act'] = act
+    data['scene'] = scene
+    data['section'] = 'Act'
     return render(request, template_name, data)

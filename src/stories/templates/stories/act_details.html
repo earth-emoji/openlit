@@ -1,0 +1,32 @@
+{% extends 'profile.html' %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+        <header class="col">
+            <div class="jumbotron">
+                <h1 class="display-4">{{ act.title }}</h1>
+                <p class="lead">About text goes here.</p>
+            </div>
+        </header>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <a class="btn btn-primary" href="{% url 'stories:scene-create' act.id %}">Add Scene</a>
+        </div>
+    </div>
+    <div class="card-columns">
+        {% for scene in scenes %}
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"><a href="{% url 'stories:scene-view' scene.id %}">{{ scene.title }}</a></h4>
+            </div>
+        </div>
+        {% empty %}
+            <p>You haven't created any scenes</p>
+        {% endfor %}
+        
+    </div>
+</div>
+{% endblock content %}

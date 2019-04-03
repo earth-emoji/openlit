@@ -22,7 +22,7 @@
                         {% for act in acts %}
                             <tr>
                                 <td scope="row">{{ act.act_number }}</td>
-                                <td>{{ act.title }}</td>
+                                <td><a href="{% url 'stories:act-view' act.id %}">{{ act.title }}</a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

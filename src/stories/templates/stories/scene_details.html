@@ -1,4 +1,49 @@
 {% extends 'profile.html' %}
 
 {% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+        <header class="col-8">
+            <div class="jumbotron">
+                <h1 class="display-4">{{ scene.title }}</h1>
+                <p class="lead">About text goes here.</p>
+            </div>
+        </header>
+        <div class="col-4">
+            <div class="row">
+                <div class="col">
+                    <h2>Characters</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-primary" href="#">Add Character</a>
+                </div>
+            </div>
+            <div class="my-3" style="overflow: scroll; max-height: 150px;">
+                Allice <br />
+                Allice <br />
+                Allice <br />
+                Allice <br />
+                Allice <br />
+                Allice <br />
+            </div>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <a class="btn btn-primary" href="#">Add Dialogue</a>
+        </div>
+    </div>
+    <dl class="row">
+        {% for d in scene.dialogues.all %}
+        <dt class="col-sm-3">{{ d.character.name }}</dt>
+        <dd class="col-sm-9">{{ d.content }}</dd>
+        {% empty %}
+        <dt class="col-sm-3">No one</dt>
+        <dd class="col-sm-9">Nothing to say.<dd>
+        {% endfor %}
+    </dl>
+</div>
 {% endblock content %}

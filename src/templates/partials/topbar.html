@@ -35,21 +35,14 @@
                             <a class="nav-link" href="{% url 'stories:act-list' story.id %}">Acts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Scenes</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="#">Images</a>
                         </li>
+                    {% elif section == 'Act' %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'stories:act-view' act.id %}">{{ act.title }}</a>
+                        </li>
                     {% else %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Page</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Page</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Page</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="#">Page</a>
                     </li>
