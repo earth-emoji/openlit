@@ -1,4 +1,36 @@
 {% extends 'profile.html' %}
 
 {% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <header class="col">
+            <h1>{{ story.title }}'s Characters</h1>
+        </header>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <a class="btn btn-primary" href="{% url 'stories:author-characters' story.id %}">Add Characters</a>
+        </div>
+    </div>
+    <div class="card-columns">
+        {% for scene in act.scenes.all %}
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{ character.name }}</h4>
+            </div>
+        </div>
+        {% empty %}
+        <div class="card my-3">
+            <div class="card-body">
+                <p class="card-text">
+                    {{ story.title }} doesn't have any characters yet.
+                </p>
+            </div>
+        </div>
+            
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock content %}

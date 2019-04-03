@@ -96,3 +96,8 @@ def act_create(request, pk, template_name='stories/act_form.html', data={}):
     data['form'] = form
     data['section'] = 'StoryDetails'
     return render(request, template_name, data)
+
+def scene_list(request, pk, template_name='stories/act_form.html', data={}):
+    act = Act.objects.get(pk=pk)
+    data['act'] = act
+    return render(request, template_name, data)

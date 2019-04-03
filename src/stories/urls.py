@@ -13,4 +13,7 @@ urlpatterns = [
         path('<int:pk>/acts/', views.act_list, name='act-list'),
         path('<int:pk>/act-create/', views.act_create, name='act-create'),
     ], 'stories'), namespace='stories')),
+    path('acts/', include(([
+        path('<int:pk>/scenes', views.scene_list, name='scene-list'),
+    ], 'stories'), namespace='acts')),
 ]
